@@ -1,0 +1,28 @@
+server:
+  port: 8002 #服务端口
+#spring相关配置
+spring:
+  application:
+    name: order-center  #服务名
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver  #数据库驱动包
+    url: jdbc:mysql://@mysql.addr@/ccmc?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: @nacos.addr@
+      config:
+        info: "来自本地1"
+    config:
+      info: "来自本地2"
+  config:
+    info: "来自本地3"
+config:
+  info: "来自配置中心de "
+#mybatis:配置
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.ccmc.ordercenter.entity  # 所有pojo别名类所在包

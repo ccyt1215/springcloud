@@ -1,0 +1,20 @@
+server:
+  port: 8001 #服务端口
+#spring相关配置
+spring:
+  application:
+    name: user-center  #服务名
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver  #数据库驱动包
+    url: jdbc:mysql://@mysql.addr@/ccmc?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: @nacos.addr@
+#mybatis:配置
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.ccmc.usercenter.entity  # 所有pojo别名类所在包

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ccmc.carinfo.service.mapper.CarInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ccmc.carinfo.entity.CarInfo">
+        <id column="id" property="id" />
+        <result column="start_station" property="startStation" />
+        <result column="pass_station" property="passStation" />
+        <result column="end_station" property="endStation" />
+        <result column="capacity" property="capacity" />
+        <result column="open_time" property="openTime" />
+        <result column="open_frequency" property="openFrequency" />
+    </resultMap>
+
+</mapper>

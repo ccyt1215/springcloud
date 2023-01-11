@@ -1,0 +1,16 @@
+#spring相关配置
+spring:
+  application:
+    name: order-center  #服务名
+  cloud:
+    nacos:
+      config:
+        server-addr: @nacos.addr@  #配置中心地址
+        file-extension: yaml  #后缀名
+        info: "来自本地的boo1t"
+    config:
+      info: "来自本地的boot2"
+  config:
+    info: "来自本地的boot3"
+config:
+  info: "来自本地的boot4"

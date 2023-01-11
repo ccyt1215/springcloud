@@ -1,0 +1,58 @@
+version: "3.8"
+
+networks:
+  ccmc:
+
+volumes:
+  data:
+
+services:
+
+  user-center:
+    build:
+      context: ./user-center
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    networks:
+      - ccmc
+
+  order-center:
+    build:
+      context: ./order-center
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8002"
+    networks:
+      - ccmc
+
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - ccmc
+
+  nacos:
+    image: nacos/nacos-server:1.3.1
+    ports:
+      - "8848:8848"
+    environment:
+      - "MODE=standalone"
+    networks:
+      - ccmc
+
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306" #只写一个端口随机使用宿主机一个端口进行容器端口映射
+    environment:
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=ccmc"
+    volumes:
+      - data:/var/lib/mysql
+      #- ./ems.sql:/docker-entrypoint-initdb.d/ems.sql
+    networks:
+      - ccmc
